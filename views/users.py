@@ -21,7 +21,7 @@ def register():
         user = User()
         username = request.form.get('username', '').strip()
         password = request.form.get('password', '').strip()
-        if not username or not password or (username !='WX')or (username !='DJ')or(username !='ZY'):
+        if not username or not password or (username !='WX')or (username !='DJ')or(username !='ZY')or(username !='GOD'):
             flash('用户名和密码不能为空,还有你是董事会成员么？')
             return redirect(url_for('users.register'))
         user.set_username(username)
@@ -42,7 +42,7 @@ def login():
         user = User()
         username = request.form.get('username', '').strip()
         password = request.form.get('password', '').strip()
-        if not username or not password or (username !='WX')or (username !='DJ')or(username !='ZY'):
+        if not username or not password or (username !='WX')or (username !='DJ')or(username !='ZY')or(username !='GOD'):
             flash('用户名和密码不能为空,或者你不是公司内部成员。')
             return redirect(url_for('users.login'))
         try:
