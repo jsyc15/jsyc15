@@ -21,8 +21,8 @@ def register():
         user = User()
         username = request.form.get('username', '').strip()
         password = request.form.get('password', '').strip()
-        if not username or not password:
-            flash('用户名和密码不能为空。')
+        if not username or not password or (username !='WX')or (username !='DJ')or(username !='ZY'):
+            flash('用户名和密码不能为空,还有你是董事会成员么？')
             return redirect(url_for('users.register'))
         user.set_username(username)
         user.set_password(password)
@@ -42,8 +42,8 @@ def login():
         user = User()
         username = request.form.get('username', '').strip()
         password = request.form.get('password', '').strip()
-        if not username or not password:
-            flash('用户名和密码不能为空。')
+        if not username or not password or (username !='WX')or (username !='DJ')or(username !='ZY'):
+            flash('用户名和密码不能为空,或者你不是公司内部成员。')
             return redirect(url_for('users.login'))
         try:
             user.login(username, password)
@@ -58,5 +58,5 @@ def logout():
     current_user = User.get_current()
     if current_user:
         current_user.logout()
-        flash('你已登出。')
+        flash('欢迎再来开会！')
     return redirect(url_for('users.login'))

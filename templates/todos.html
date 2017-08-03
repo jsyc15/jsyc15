@@ -1,13 +1,13 @@
 {% extends "layout.html" %}
 {% set active = 'todos' -%}
-{% block title %}todo 列表{% endblock %}
+{% block title %}双桥投资{% endblock %}
 {% block content %}
   <div class="page-header">
     <h1>双桥投资发展股份有限公司DDB.coo</h1>
   </div>
   <form action="/todos" method="post">
     <div class="input-group">
-      <input id="todo-content" class="form-control input-lg" type="text" name="content" placeholder="新建一个待办事项……" />
+      <input id="todo-content" class="form-control input-lg" type="text" name="content" placeholder="添加董事会待议事项……" />
       <span class="input-group-btn">
         <button class="btn btn-success btn-lg" type="button" onclick=submit()><span class="glyphicon glyphicon-chevron-right"></span></button>
       </span>
@@ -16,7 +16,7 @@
   {% if not g.user %}
     <div class="alert alert-info alert-box">
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">&times;</span></button>
-    <p>未登录状态下创建的 todo 可以被所有人看到并修改或删除，<a class="alert-link" href="{{ url_for('users.login') }}">登录</a> 后创建的 todo 则只有自己可修改、删除。想要让自己创建的 todo 对其他人不可见，在代码中移除 <code>acl.set_public_read_access(True)</code> 这一行即可。</p>
+    <p>未登录状态下创建的会议议题可以被所有董事看到并修改或删除，<a class="alert-link" href="{{ url_for('users.login') }}">登录</a> 后创建的会议议题则只有自己可修改、删除。想要让自己创建的 todo 对其他人不可见，在代码中移除 <code>acl.set_public_read_access(True)</code> 这一行即可。</p>
   </div>
 {% endif %}
 {% with messages = get_flashed_messages() %}
@@ -38,13 +38,13 @@
 <div class="list-empty">
   <p class="text-center large-emoji">🎉</p>
   <p class="text-center lead">All Done!</p>
-  <p class="text-center"><a class="text-muted" href="{{ url_for('todos.show', status=1) }}">查看已完成的 todo</a> 或者 <a class="text-muted" href="#" onclick=document.getElementById('todo-content').focus()>创建一个新的 todo</span></p>
+  <p class="text-center"><a class="text-muted" href="{{ url_for('todos.show', status=1) }}">查看已结束议题 todo</a> 或者 <a class="text-muted" href="#" onclick=document.getElementById('todo-content').focus()>创建一个新的 议题</span></p>
 </div>
 {% elif status == 1 %}
 <div class="list-empty">
   <p class="text-center large-emoji">🤔</p>
   <p class="text-center lead">Wow. Nothing's Done Here.</p>
-  <p class="text-center"><a class="text-muted" href="{{ url_for('todos.show', status=0) }}">去看看未完成的 todo</a></p>
+  <p class="text-center"><a class="text-muted" href="{{ url_for('todos.show', status=0) }}">去看看未完成的议题</a></p>
 </div>
 {% endif %}
 {% else %}
@@ -75,6 +75,6 @@
   {% endfor %}
 </ul>
 {% endif %}
-<p class="text-muted"><span class="glyphicon glyphicon-info-sign"></span> {% if todos|length == 1 %}只剩下最后{% else %}共{% endif %} {{ todos|length }} 个 todo。</p>
+<p class="text-muted"><span class="glyphicon glyphicon-info-sign"></span> {% if todos|length == 1 %}只剩下最后{% else %}共{% endif %} {{ todos|length }} 个 议题。</p>
 {% endif %}
 {% endblock %}
